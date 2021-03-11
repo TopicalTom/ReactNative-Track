@@ -13,10 +13,13 @@ import useLocation from '../hooks/useLocation';
 
 // Components
 import Map from '../components/Map';
+import TrackForm from '../components/TrackForm';
 
 const TrackCreateScreen = () => {
-    const { addLocation } = useContext(LocationContext);
-    const [ err ] = useLocation(useIsFocused(), addLocation);
+    const { state, addLocation } = useContext(LocationContext);
+    const [ err ] = useLocation(useIsFocused() || state.recording, location => {
+        addLocation(location);
+    });
 
     return (
         <SafeAreaView>
@@ -26,6 +29,7 @@ const TrackCreateScreen = () => {
                 ?   <Text>Please enable location services</Text>
                 :   null
             }
+            <TrackForm />
         </SafeAreaView>
     );
 };
