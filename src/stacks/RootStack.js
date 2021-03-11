@@ -9,12 +9,17 @@ import { Context as AuthContext } from '../context/AuthContext';
 import AuthStack from '../stacks/AuthStack';
 import TabStack from '../stacks/TabStack';
 
+// Screen
+import SplashScreen from '../screens/SplashScreen';
+
 const Root = createStackNavigator();
 
 const RootStack = () => {
     const { state } = useContext(AuthContext);
 
-    console.log(state)
+    if (state.loading) {
+        return <SplashScreen />;
+    };
 
     return (
         <NavigationContainer>
@@ -25,7 +30,7 @@ const RootStack = () => {
                         component={AuthStack} 
                         options={() => ({ 
                             headerShown: false,
-                            animationTypeForReplace: 'push'
+                            animationTypeForReplace: 'pop'
                         })}
                     />
                 ) : (
