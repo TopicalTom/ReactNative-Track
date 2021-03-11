@@ -1,36 +1,17 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { Provider as AuthProvider } from './src/context/AuthContext';
 
 // Stack
-import AuthStack from './src/stacks/AuthStack';
-import TabStack from './src/stacks/TabStack';
-
-const RootStack = createStackNavigator();
+import RootStack from './src/stacks/RootStack';
 
 const App = () => {
     return (
         <SafeAreaProvider>
-            <NavigationContainer>
-                <RootStack.Navigator>
-                    <RootStack.Screen 
-                        name="Auth" 
-                        component={AuthStack} 
-                        options={() => ({ 
-                            title: 'Auth'
-                        })}
-                    />
-                    <RootStack.Screen 
-                        name="Tab" 
-                        component={TabStack} 
-                        options={() => ({ 
-                            title: 'Tab'
-                        })}
-                    />
-                </RootStack.Navigator>
-            </NavigationContainer>
+            <AuthProvider>
+                <RootStack />
+            </AuthProvider>
         </SafeAreaProvider>
     );
 };

@@ -17,21 +17,21 @@ const TabStack = () => {
                 name="Track" 
                 component={TrackStack} 
                 options={() => ({ 
-                    title: 'Track'
+                    headerShown: false,
                 })}
             />
             <Tab.Screen 
                 name="TrackCreate" 
                 component={TrackCreateScreen} 
                 options={() => ({ 
-                    title: 'Create'
+                    headerShown: false,
                 })}
             />
             <Tab.Screen 
                 name="Account" 
                 component={AccountScreen} 
                 options={() => ({ 
-                    title: 'Account'
+                    headerShown: false,
                 })}
             />
         </Tab.Navigator>

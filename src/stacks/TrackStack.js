@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 
 const TrackStack = () => {
     return (
-        <TrackStack.Navigator initialRouteName="TrackList">
+        <Stack.Navigator initialRouteName="TrackList">
             <Stack.Screen 
                 name="TrackList" 
                 component={TrackListScreen} 
@@ -24,7 +24,7 @@ const TrackStack = () => {
                     title: 'Details'
                 })}
             />
-        </TrackStack.Navigator>
+        </Stack.Navigator>
     );
 };
 

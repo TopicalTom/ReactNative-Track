@@ -14,14 +14,14 @@ const AuthStack = () => {
                 name="Signup" 
                 component={SignupScreen} 
                 options={() => ({ 
-                    title: 'Sign up'
+                    headerShown: false,
                 })}
             />
             <Stack.Screen 
                 name="Signin" 
                 component={SigninScreen} 
                 options={() => ({ 
-                    title: 'Sign in'
+                    headerShown: false,
                 })}
             />
         </Stack.Navigator>
