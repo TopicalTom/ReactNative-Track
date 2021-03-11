@@ -2,14 +2,14 @@ import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const SignupScreen = () => {
+const SigninScreen = () => {
     const navigation = useNavigation();
     return (
         <>
-            <Text>Sign Up</Text>
+            <Text>Sign In</Text>
             <Button 
-                title="Go to Sign In" 
-                onPress={() => navigation.navigate('Signin')}
+                title="Go to Sign Up" 
+                onPress={() => navigation.navigate('Signup')}
             />
         </>
     );
@@ -17,4 +17,4 @@ const SignupScreen = () => {
 
 const styles = StyleSheet.create({});
 
-export default SignupScreen;
+export default SigninScreen;

@@ -4,24 +4,32 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// Screens
-import SignupScreen from './src/screens/SignupScreen';
+// Stack
+import AuthStack from './src/stacks/AuthStack';
+import TabStack from './src/stacks/TabStack';
 
-const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
 
 const App = () => {
     return (
         <SafeAreaProvider>
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Signup">
-                    <Stack.Screen 
-                        name="Signup" 
-                        component={SignupScreen} 
+                <RootStack.Navigator>
+                    <RootStack.Screen 
+                        name="Auth" 
+                        component={AuthStack} 
                         options={() => ({ 
-                            title: 'Sign up'
+                            title: 'Auth'
                         })}
                     />
-                </Stack.Navigator>
+                    <RootStack.Screen 
+                        name="Tab" 
+                        component={TabStack} 
+                        options={() => ({ 
+                            title: 'Tab'
+                        })}
+                    />
+                </RootStack.Navigator>
             </NavigationContainer>
         </SafeAreaProvider>
     );
