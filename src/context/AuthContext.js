@@ -7,12 +7,14 @@ const authReducer = (state, action) => {
     switch (action.type) { 
         case 'add_error':
             return { ...state, loading: false, errorMessage: action.payload };
+        case 'clear_error_message':
+            return { ...state, loading: false, errorMessage: '' };
         case 'go_to_auth':
             return { ...state, loading: false };
         case 'signin':
             return { errorMessage: '', loading: false, token: action.payload };
-        case 'clear_error_message':
-            return { ...state, loading: false, errorMessage: '' };
+        case 'signout':
+            return { errorMessage: '', loading: true, token: null };
         default:
             return state;
     }
@@ -43,7 +45,6 @@ const signup = dispatch => async ({ email, password }) => {
             payload: response.data.token
         });
     } catch (err) {
-        console.log(err)
         dispatch({ 
             type: 'add_error', 
             payload: 'Something went wrong with sign up'
@@ -59,17 +60,18 @@ const signin = dispatch => async ({ email, password }) => {
             payload: response.data.token
         });
     } catch (err) {
-        console.log(err)
         dispatch({ 
             type: 'add_error', 
             payload: 'Something went wrong with sign in'
         });
     };
 };
-const signout = dispatch => {
-    return () => {
-        // 
-    }
+const signout = dispatch => async () => {
+    await AsyncStorage.removeItem('token');
+    dispatch({ 
+        type: 'signout', 
+        payload: 'Something went wrong with sign in'
+    });
 }
 
 export const { Context, Provider } = createDataContext(
