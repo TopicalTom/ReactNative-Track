@@ -69,7 +69,6 @@ export default (shouldTrack, callback) => {
     }
 
     useEffect(() => {
-        console.log("running")
         if (shouldTrack) {
             startWatching();
         } else {

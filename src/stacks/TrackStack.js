@@ -14,14 +14,14 @@ const TrackStack = () => {
                 name="TrackList" 
                 component={TrackListScreen} 
                 options={() => ({ 
-                    title: 'List'
+                    title: 'Tracks'
                 })}
             />
             <Stack.Screen 
                 name="TrackDetail" 
                 component={TrackDetailScreen} 
                 options={() => ({ 
-                    title: 'Details'
+                    title: ''
                 })}
             />
         </Stack.Navigator>

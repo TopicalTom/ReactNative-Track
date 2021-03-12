@@ -3,6 +3,7 @@ import * as React from 'react';
 
 // Contexts
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider as TrackProvider } from './src/context/TrackContext';
 import { Provider as LocationProvider } from './src/context/LocationContext';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 
@@ -12,11 +13,13 @@ import RootStack from './src/stacks/RootStack';
 const App = () => {
     return (
         <SafeAreaProvider>
-            <LocationProvider>
-                <AuthProvider>
-                    <RootStack />
-                </AuthProvider>
-            </LocationProvider>
+            <TrackProvider>
+                <LocationProvider>
+                    <AuthProvider>
+                        <RootStack />
+                    </AuthProvider>
+                </LocationProvider>
+            </TrackProvider>
         </SafeAreaProvider>
     );
 };

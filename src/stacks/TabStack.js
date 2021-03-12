@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Icon } from 'react-native-elements';
 
 // Stack
 import TrackStack from './TrackStack';
@@ -12,12 +13,25 @@ const Tab = createBottomTabNavigator();
 
 const TabStack = () => {
     return (
-        <Tab.Navigator initialRouteName="Track">
+        <Tab.Navigator 
+            initialRouteName="Tracks"
+            tabBarOptions={{
+                activeTintColor: 'black',
+              }}>
             <Tab.Screen 
-                name="Track" 
+                name="Tracks" 
                 component={TrackStack} 
                 options={() => ({ 
                     headerShown: false,
+                    tabBarLabel: 'Track List',
+                    tabBarIcon: () => (
+                        <Icon 
+                            name="home" 
+                            type="feather"
+                            color='black' 
+                            size={30} 
+                        />
+                    ),
                 })}
             />
             <Tab.Screen 
@@ -25,6 +39,15 @@ const TabStack = () => {
                 component={TrackCreateScreen} 
                 options={() => ({ 
                     headerShown: false,
+                    tabBarLabel: 'Add Track',
+                    tabBarIcon: () => (
+                        <Icon 
+                            name="plus-square" 
+                            type="feather"
+                            color='black' 
+                            size={30} 
+                        />
+                    ),
                 })}
             />
             <Tab.Screen 
@@ -32,6 +55,15 @@ const TabStack = () => {
                 component={AccountScreen} 
                 options={() => ({ 
                     headerShown: false,
+                    tabBarLabel: 'Account',
+                    tabBarIcon: () => (
+                        <Icon 
+                            name="user" 
+                            type="feather"
+                            color='black' 
+                            size={30}
+                        />
+                    ),
                 })}
             />
         </Tab.Navigator>
